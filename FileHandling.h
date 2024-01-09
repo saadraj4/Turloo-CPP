@@ -8,16 +8,18 @@
 #include "PrescriptionManagement.h"
 #include "MedicationManagement.h"
 
+using namespace std;
+
 // File paths
-const std::string USERS_FILE = "users.txt";
-const std::string PATIENTS_FILE = "patients.txt";
-const std::string PRESCRIPTIONS_FILE = "prescriptions.txt";
-const std::string MEDICATIONS_FILE = "medications.txt";
+const string USERS_FILE = "users.txt";
+const string PATIENTS_FILE = "patients.txt";
+const string PRESCRIPTIONS_FILE = "prescriptions.txt";
+const string MEDICATIONS_FILE = "medications.txt";
 
 // Load data from files
 void loadDataFromFile(std::vector<User>& users, std::vector<Patient>& patients, std::vector<Prescription>& prescriptions, std::vector<Medication>& medications) {
     // Load users
-    std::ifstream usersFile(USERS_FILE);
+    ifstream usersFile(USERS_FILE);
     if (usersFile.is_open()) {
         User user;
         while (usersFile >> user.userID >> user.username >> user.password >> user.role) {
@@ -27,7 +29,7 @@ void loadDataFromFile(std::vector<User>& users, std::vector<Patient>& patients, 
     }
 
     // Load patients
-    std::ifstream patientsFile(PATIENTS_FILE);
+    ifstream patientsFile(PATIENTS_FILE);
     if (patientsFile.is_open()) {
         Patient patient;
         while (patientsFile >> patient.patientID >> patient.Fname >> patient.Lname >> patient.contactDetails >> patient.medicalHistory) {
@@ -37,7 +39,7 @@ void loadDataFromFile(std::vector<User>& users, std::vector<Patient>& patients, 
     }
 
     // Load prescriptions
-    std::ifstream prescriptionsFile(PRESCRIPTIONS_FILE);
+    ifstream prescriptionsFile(PRESCRIPTIONS_FILE);
     if (prescriptionsFile.is_open()) {
         Prescription prescription;
         while (prescriptionsFile >> prescription.prescriptionID >> prescription.patientID >> prescription.dateIssued >> std::ws) {
@@ -48,7 +50,7 @@ void loadDataFromFile(std::vector<User>& users, std::vector<Patient>& patients, 
     }
 
     // Load medications
-    std::ifstream medicationsFile(MEDICATIONS_FILE);
+    ifstream medicationsFile(MEDICATIONS_FILE);
     if (medicationsFile.is_open()) {
         Medication medication;
         while (medicationsFile >> medication.medicationID >> medication.medicationName >> medication.quantity >> medication.issueDate >> medication.expiryDate) {
@@ -61,7 +63,7 @@ void loadDataFromFile(std::vector<User>& users, std::vector<Patient>& patients, 
 // Save data to files
 void saveDataToFile(const std::vector<User>& users, const std::vector<Patient>& patients, const std::vector<Prescription>& prescriptions, const std::vector<Medication>& medications) {
     // Save users
-    std::ofstream usersFile(USERS_FILE);
+    ofstream usersFile(USERS_FILE);
     if (usersFile.is_open()) {
         for (const User& user : users) {
             usersFile << user.userID << ' ' << user.username << ' ' << user.password << ' ' << user.role << '\n';
@@ -70,7 +72,7 @@ void saveDataToFile(const std::vector<User>& users, const std::vector<Patient>& 
     }
 
     // Save patients
-    std::ofstream patientsFile(PATIENTS_FILE);
+    ofstream patientsFile(PATIENTS_FILE);
     if (patientsFile.is_open()) {
         for (const Patient& patient : patients) {
             patientsFile << patient.patientID << ' ' << patient.Fname << ' ' << patient.Lname << ' ' << patient.contactDetails << ' ' << patient.medicalHistory << '\n';
@@ -79,7 +81,7 @@ void saveDataToFile(const std::vector<User>& users, const std::vector<Patient>& 
     }
 
     // Save prescriptions
-    std::ofstream prescriptionsFile(PRESCRIPTIONS_FILE);
+    ofstream prescriptionsFile(PRESCRIPTIONS_FILE);
     if (prescriptionsFile.is_open()) {
         for (const Prescription& prescription : prescriptions) {
             prescriptionsFile << prescription.prescriptionID << ' ' << prescription.patientID << ' ' << prescription.dateIssued << ' ' << prescription.medicationDetails << '\n';
@@ -88,7 +90,7 @@ void saveDataToFile(const std::vector<User>& users, const std::vector<Patient>& 
     }
 
     // Save medications
-    std::ofstream medicationsFile(MEDICATIONS_FILE);
+    ofstream medicationsFile(MEDICATIONS_FILE);
     if (medicationsFile.is_open()) {
         for (const Medication& medication : medications) {
             medicationsFile << medication.medicationID << ' ' << medication.medicationName << ' ' << medication.quantity << ' ' << medication.issueDate << ' ' << medication.expiryDate << '\n';

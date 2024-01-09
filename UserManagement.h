@@ -4,20 +4,21 @@
 #include <vector>
 #include <string>
 #include <iostream>
+using namespace std;
 
 struct User {
     int userID;
-    std::string username;
-    std::string password;
-    std::string role;
+    string username;
+    string password;
+    string role;
 };
 
-void userSignUp(std::vector<User>& users, const std::string& username, const std::string& password, const std::string& role) {
+void userSignUp(std::vector<User>& users, const string& username, const string& password, const string& role) {
     // Implementation for userSignUp
     // Ensure username uniqueness
     for (const User& user : users) {
         if (user.username == username) {
-            std::cout << "Username already exists. Choose a different username.\n";
+            cout << "Username already exists. Choose a different username.\n";
             return;
         }
     }
@@ -30,10 +31,10 @@ void userSignUp(std::vector<User>& users, const std::string& username, const std
     newUser.role = role;
 
     users.push_back(newUser);
-    std::cout << "User registration successful!\n";
+    cout << "User registration successful!\n";
 }
 
-bool userLogin(const std::vector<User>& users, const std::string& username, const std::string& password) {
+bool userLogin(const std::vector<User>& users, const string& username, const string& password) {
     // Implementation for userLogin
     for (const User& user : users) {
         if (user.username == username && user.password == password) {

@@ -162,6 +162,23 @@ int main()
                             }
                         }
                         break;
+                    
+                    case 4:
+                        {
+                            int patientId;
+                            cout << "Enter patient ID to search: ";
+                            cin >> patientId;
+
+                            // Check if patient exists
+                            if (patientExists(patients, patientId))
+                            {
+                                searchPatient(patients, patientId);
+                            }
+                            else
+                            {
+                                cout << "Patient not found.\n";
+                            }
+                        }
 
                     case 0:
                         break;
@@ -220,6 +237,22 @@ int main()
 
                         break;
                     }
+                    case 3:
+                        {
+                            int prescriptionID;
+                            cout << "Enter prescription ID to search: ";
+                            cin >> prescriptionID;
+
+                            // Check if the prescription exists
+                            if (prescriptionExists(prescriptions, prescriptionID))
+                            {
+                                searchPrescription(prescriptions, prescriptionID);
+                            }
+                            else
+                            {
+                                cout << "Prescription not found.\n";
+                            }
+                        }
                     case 0: // Back to Patient Management Menu
                         break;
                     default:
@@ -246,10 +279,10 @@ int main()
                     case 1: // Add Medication
                     {
                         int medicationID;
-                        std::string medicationName;
+                        string medicationName;
                         int quantity;
-                        std::string isuueDate;
-                        std::string expiryDate;
+                        string isuueDate;
+                        string expiryDate;
                         cout << "Enter medication ID: ";
                         cin >> medicationID;
                         cout << "Enter medication name: ";
@@ -311,6 +344,22 @@ int main()
                         }
                         break;
                     }
+                    case 4:
+                        {
+                            int medicationID;
+                            cout << "Enter medication ID to search: ";
+                            cin >> medicationID;
+
+                            // Check if medication exists
+                            if (medicationExists(medications, medicationID))
+                            {
+                                searchMedication(medications, medicationID);
+                            }
+                            else
+                            {
+                                cout << "Medication not found.\n";
+                            }
+                        }
                     case 0:
                         break;
                     default:
@@ -321,13 +370,29 @@ int main()
                 break;
 
             case 4: // Reporting
-                // Add the reporting logic here
+                int reportingMenuChoice;
+                do
+                {
+                    displayReportingMenu();
+                    cin >> reportingMenuChoice;
+
+                    switch (reportingMenuChoice)
+                    {
+                    case 1:
+                        generateInventoryReport(medications);
+                        break;
+                    case 2:
+                        generatePatientReport(patients);
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        cout << "Invalid choice. Please try again.\n";
+                    }
+                } while (reportingMenuChoice != 0);
                 break;
-            case 5: // Save Data to Files
-                saveDataToFile(users, patients, prescriptions, medications);
-                cout << "Data saved successfully!\n";
-                break;
-            case 0:
+
+                        case 0:
                 cout << "Exiting the Pharmacy Management System.\n";
                 break;
             default:
@@ -350,7 +415,6 @@ void displayMainMenu(bool isLoggedIn)
         cout << "2. Prescription Management\n";
         cout << "3. Medication Management\n";
         cout << "4. Reporting\n";
-        cout << "5. Save Data to Files\n";
     }
     else
     {
@@ -377,6 +441,7 @@ void displayPatientManagementMenu()
     cout << "1. Add Patient\n";
     cout << "2. Update Patient\n";
     cout << "3. Remove Patient\n";
+    cout << "4. Search Patient\n";
     cout << "0. Back to Main Menu\n";
     cout << "----------------------------------\n";
     cout << "Enter your choice: ";
@@ -387,6 +452,7 @@ void displayPrescriptionManagementMenu()
     cout << "\n----- Prescription Management Menu -----\n";
     cout << "1. Create Prescription\n";
     cout << "2. Update Prescription\n";
+    cout << "3. Search Prescription\n";
     cout << "0. Back to Main Menu\n";
     cout << "-----------------------------------------\n";
     cout << "Enter your choice: ";
@@ -398,6 +464,7 @@ void displayMedicationManagementMenu()
     cout << "1. Add Medication\n";
     cout << "2. Update Medication Stock\n";
     cout << "3. Remove Medication\n";
+    cout << "4. Search Medication\n";
     cout << "0. Back to Main Menu\n";
     cout << "--------------------------------------\n";
     cout << "Enter your choice: ";

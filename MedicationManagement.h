@@ -5,17 +5,18 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+using namespace std;
 
 struct Medication
 {
     int medicationID;
-    std::string medicationName;
+    string medicationName;
     int quantity;
-    std::string issueDate;
-    std::string expiryDate;
+    string issueDate;
+    string expiryDate;
 };
 
-void addMedication(std::vector<Medication> &medications, int id, const std::string &medicationName, int quantity, const std::string &issueDate, const std::string &expiryDate)
+void addMedication(vector<Medication> &medications, int id, const string &medicationName, int quantity, const string &issueDate, const string &expiryDate)
 {
     // Implementation for addMedication
     Medication newMedication;
@@ -26,10 +27,10 @@ void addMedication(std::vector<Medication> &medications, int id, const std::stri
     newMedication.expiryDate = expiryDate;
 
     medications.push_back(newMedication);
-    std::cout << "Medication added successfully!\n";
+    cout << "Medication added successfully!\n";
 }
 
-void updateMedicationStock(std::vector<Medication> &medications, int medicationID, int newQuantity, const std::string &newName, const std::string &newIssueDate, const std::string &newExpiryDate )
+void updateMedicationStock(vector<Medication> &medications, int medicationID, int newQuantity, const string &newName, const string &newIssueDate, const string &newExpiryDate)
 {
     // Implementation for updateMedicationStock
     for (Medication &medication : medications)
@@ -40,34 +41,49 @@ void updateMedicationStock(std::vector<Medication> &medications, int medicationI
             medication.medicationName = newName;
             medication.issueDate = newIssueDate;
             medication.expiryDate = newExpiryDate;
-            std::cout << "Medication stock updated successfully!\n";
+            cout << "Medication stock updated successfully!\n";
             return;
         }
     }
-    std::cout << "Medication not found.\n";
+    cout << "Medication not found.\n";
 }
 
-void removeMedication(std::vector<Medication> &medications, int medicationID)
+void removeMedication(vector<Medication> &medications, int medicationID)
 {
     // Implementation for removeMedication
-    auto it = std::remove_if(medications.begin(), medications.end(), [medicationID](const Medication &medication)
+    auto it = remove_if(medications.begin(), medications.end(), [medicationID](const Medication &medication)
                              { return medication.medicationID == medicationID; });
 
     if (it != medications.end())
     {
         medications.erase(it, medications.end());
-        std::cout << "Medication removed successfully!\n";
+        cout << "Medication removed successfully!\n";
     }
     else
     {
-        std::cout << "Medication not found.\n";
+        cout << "Medication not found.\n";
     }
 }
-
+// function to search for medication   
+void searchMedication(vector<Medication> &medications, int medicationID){
+    // Implementation for searchMedication
+    for (Medication &medication : medications)
+    {
+        if (medication.medicationID == medicationID)
+        {
+            cout << "Medication ID: " << medication.medicationID << endl;
+            cout << "Name: " << medication.medicationName << endl;
+            cout << "Quantity: " << medication.quantity << endl;
+            cout << "issue Date: " << medication.issueDate << endl;
+            cout << "Expiry Date: " << medication.expiryDate << endl;
+        }
+        
+    }
+}
 // Function to check if a medication with a given ID exists
-bool medicationExists(const std::vector<Medication> &medications, int medicationID)
+bool medicationExists(const vector<Medication> &medications, int medicationID)
 {
-    auto it = std::find_if(medications.begin(), medications.end(),
+    auto it = find_if(medications.begin(), medications.end(),
                            [medicationID](const Medication &medication)
                            {
                                return medication.medicationID == medicationID;
