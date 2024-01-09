@@ -173,11 +173,153 @@ int main()
                 break;
 
             case 2: // Prescription Management
-                // Add the prescription management logic here
+            {
+                int patientID;
+                cout << "Enter patient ID: ";
+                cin >> patientID;
+
+                // Check if the patient exists
+                if (patientExists(patients, patientID))
+                {
+                    int prescriptionChoice;
+                    displayPrescriptionManagementMenu();
+                    cin >> prescriptionChoice;
+
+                    switch (prescriptionChoice)
+                    {
+                    case 1: // Create Prescription
+                    {
+                        string date, details;
+                        cout << "Enter prescription date (YYYY-MM-DD): ";
+                        cin >> date;
+                        cout << "Enter prescription details: ";
+                        cin.ignore(); // Clear buffer
+                        getline(cin, details);
+
+                        createPrescription(prescriptions, patientID, date, details);
+                        saveDataToFile(users, patients, prescriptions, medications);
+                        break;
+                    }
+                    case 2: // Update Prescription
+                    {
+                        int prescriptionID;
+                        cout << "Enter prescription ID to update: ";
+                        cin >> prescriptionID;
+
+                        // Check if the prescription exists
+                        if (prescriptionExists(prescriptions, prescriptionID))
+                        {
+                            string updatedDetails;
+                            cout << "Enter updated prescription details: ";
+                            cin.ignore(); // Clear buffer
+                            getline(cin, updatedDetails);
+
+                            updatePrescription(prescriptions, prescriptionID, updatedDetails);
+                            saveDataToFile(users, patients, prescriptions, medications);
+                        }
+
+                        break;
+                    }
+                    case 0: // Back to Patient Management Menu
+                        break;
+                    default:
+                        cout << "Invalid choice. Please try again.\n";
+                    }
+                }
+                else
+                {
+                    cout << "Patient not found.\n";
+                }
                 break;
+            }
+
             case 3: // Medication Management
-                // Add the medication management logic here
+
+                int medicationMenuChoice;
+                do
+                {
+                    displayMedicationManagementMenu();
+                    cin >> medicationMenuChoice;
+
+                    switch (medicationMenuChoice)
+                    {
+                    case 1: // Add Medication
+                    {
+                        int medicationID;
+                        std::string medicationName;
+                        int quantity;
+                        std::string isuueDate;
+                        std::string expiryDate;
+                        cout << "Enter medication ID: ";
+                        cin >> medicationID;
+                        cout << "Enter medication name: ";
+                        cin >> medicationName;
+                        cout << "Enter quantity: ";
+                        cin >> quantity;
+                        cout << "Enter issue date (YYYY-MM-DD): ";
+                        cin >> isuueDate;
+                        cout << "Enter expiry date (YYYY-MM-DD): ";
+                        cin >> expiryDate;
+
+                        addMedication(medications,medicationID, medicationName, quantity, isuueDate, expiryDate);
+                        saveDataToFile(users, patients, prescriptions, medications);
+                        break;
+                    }
+                    case 2: // Update Medication Stock
+                    {
+                        int medicationID, newQuantity;
+                        string newName,newIssueDate,newExpiryDate;
+                        cout << "Enter medication ID to update stock: ";
+                        cin >> medicationID;
+
+                        // Check if medication exists
+                        if (medicationExists(medications, medicationID))
+                        {
+                            cout << "Enter medication name: ";
+                            cin >> newName;
+                            cout << "Enter quantity: ";
+                            cin >> newQuantity;
+                            cout << "Enter issue date (YYYY-MM-DD): ";
+                            cin >> newIssueDate;
+                            cout << "Enter expiry date (YYYY-MM-DD): ";
+                            cin >> newExpiryDate;
+
+                            updateMedicationStock(medications, medicationID, newQuantity,newName,newIssueDate,newExpiryDate);
+                            saveDataToFile(users, patients, prescriptions, medications);
+                        }
+                        else
+                        {
+                            cout << "Medication not found.\n";
+                        }
+                        break;
+                    }
+                    case 3: // Remove Medication
+                    {
+                        int medicationID;
+                        cout << "Enter medication ID to remove: ";
+                        cin >> medicationID;
+
+                        // Check if medication exists
+                        if (medicationExists(medications, medicationID))
+                        {
+                            removeMedication(medications, medicationID);
+                            saveDataToFile(users, patients, prescriptions, medications);
+                        }
+                        else
+                        {
+                            cout << "Medication not found.\n";
+                        }
+                        break;
+                    }
+                    case 0:
+                        break;
+                    default:
+                        cout << "Invalid choice. Please try again.\n";
+                    }
+                } while (medicationMenuChoice != 0);
+
                 break;
+
             case 4: // Reporting
                 // Add the reporting logic here
                 break;
