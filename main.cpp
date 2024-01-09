@@ -117,6 +117,7 @@ int main()
                     cout << "Enter role: ";
                     cin >> role;
                     userSignUp(users, username, password, role);
+                    saveDataToFile(users, patients, prescriptions, medications);
                     break;
                 case 2:
                     // Take user input for login
