@@ -1,2 +1,1 @@
-1 ahmed ahmed patient
-2 saad saad admin
+1 saad saad admin
