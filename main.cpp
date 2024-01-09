@@ -261,14 +261,14 @@ int main()
                         cout << "Enter expiry date (YYYY-MM-DD): ";
                         cin >> expiryDate;
 
-                        addMedication(medications,medicationID, medicationName, quantity, isuueDate, expiryDate);
+                        addMedication(medications, medicationID, medicationName, quantity, isuueDate, expiryDate);
                         saveDataToFile(users, patients, prescriptions, medications);
                         break;
                     }
                     case 2: // Update Medication Stock
                     {
                         int medicationID, newQuantity;
-                        string newName,newIssueDate,newExpiryDate;
+                        string newName, newIssueDate, newExpiryDate;
                         cout << "Enter medication ID to update stock: ";
                         cin >> medicationID;
 
@@ -284,7 +284,7 @@ int main()
                             cout << "Enter expiry date (YYYY-MM-DD): ";
                             cin >> newExpiryDate;
 
-                            updateMedicationStock(medications, medicationID, newQuantity,newName,newIssueDate,newExpiryDate);
+                            updateMedicationStock(medications, medicationID, newQuantity, newName, newIssueDate, newExpiryDate);
                             saveDataToFile(users, patients, prescriptions, medications);
                         }
                         else
