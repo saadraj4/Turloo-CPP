@@ -1,0 +1,13 @@
+----- Patient Report -----
+Patient ID: 1233
+First Name: saad
+Last Name: raja
+Contact Details: 0293829
+Medical History: nothing
+--------------------------------------------
+Patient ID: 123
+First Name: muhammad
+Last Name: ali
+Contact Details: 0383638
+Medical History: nothing
+--------------------------------------------

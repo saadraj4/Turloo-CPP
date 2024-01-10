@@ -1,7 +1,7 @@
 ----- Inventory Report -----
 Medication ID: 900
-Name: aspirin
-Quantity: 20
-Issue Date: 2003-01-20
-Expiry Date: 2004-03-12
+Name: panadol
+Quantity: 10
+Issue Date: 2023-01-19
+Expiry Date: 2024-01-19
 --------------------------------------------
