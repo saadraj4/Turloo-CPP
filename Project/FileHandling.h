@@ -17,7 +17,7 @@ const string PRESCRIPTIONS_FILE = "prescriptions.txt";
 const string MEDICATIONS_FILE = "medications.txt";
 
 // Load data from files
-void loadDataFromFile(vector<User>& users, vector<Patient>& patients, vector<Prescription>& prescriptions, vector<Medication>& medications) {
+void loadDataFromFile(std::vector<User>& users, std::vector<Patient>& patients, std::vector<Prescription>& prescriptions, std::vector<Medication>& medications) {
     // Load users
     ifstream usersFile(USERS_FILE);
     if (usersFile.is_open()) {
@@ -42,8 +42,8 @@ void loadDataFromFile(vector<User>& users, vector<Patient>& patients, vector<Pre
     ifstream prescriptionsFile(PRESCRIPTIONS_FILE);
     if (prescriptionsFile.is_open()) {
         Prescription prescription;
-        while (prescriptionsFile >> prescription.prescriptionID >> prescription.patientID >> prescription.dateIssued >> ws) {
-            getline(prescriptionsFile, prescription.medicationDetails);
+        while (prescriptionsFile >> prescription.prescriptionID >> prescription.patientID >> prescription.dateIssued >> std::ws) {
+            std::getline(prescriptionsFile, prescription.medicationDetails);
             prescriptions.push_back(prescription);
         }
         prescriptionsFile.close();
@@ -61,7 +61,7 @@ void loadDataFromFile(vector<User>& users, vector<Patient>& patients, vector<Pre
 }
 
 // Save data to files
-void saveDataToFile(const vector<User>& users, const vector<Patient>& patients, const vector<Prescription>& prescriptions, const vector<Medication>& medications) {
+void saveDataToFile(const std::vector<User>& users, const std::vector<Patient>& patients, const std::vector<Prescription>& prescriptions, const std::vector<Medication>& medications) {
     // Save users
     ofstream usersFile(USERS_FILE);
     if (usersFile.is_open()) {

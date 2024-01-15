@@ -28,7 +28,7 @@ void clearScreen()
 
 int main()
 {
-    vector<User> user; 
+    vector<User> user;
     vector<Patient> patients;
     vector<Prescription> prescriptions;
     vector<Medication> medications;
@@ -115,7 +115,7 @@ int main()
                         // Add Patient
                         {
                             string firstName, lastName, phoneNumber, notes;
-                            string id;
+                            int id;
                             cout << "Enter patient ID: ";
                             cin >> id;
                             cout << "Enter patient's first name: ";
@@ -136,7 +136,7 @@ int main()
                     case 2:
                         // Update Patient
                         {
-                            string patientId;
+                            int patientId;
                             cout << "Enter patient ID to update: ";
                             cin >> patientId;
 
@@ -167,7 +167,7 @@ int main()
                     case 3:
                         // Remove Patient
                         {
-                            string patientId;
+                            int patientId;
                             cout << "Enter patient ID to remove: ";
                             cin >> patientId;
                             clearScreen();
@@ -187,7 +187,7 @@ int main()
 
                     case 4:
                     {
-                        string patientId;
+                        int patientId;
                         cout << "Enter patient ID to search: ";
                         cin >> patientId;
                         clearScreen();
@@ -215,7 +215,7 @@ int main()
 
             case 2: // Prescription Management
             {
-                string patientID;
+                int patientID;
                 cout << "Enter patient ID: ";
                 cin >> patientID;
                 clearScreen();
@@ -245,7 +245,7 @@ int main()
                     }
                     case 2: // Update Prescription
                     {
-                        string prescriptionID;
+                        int prescriptionID;
                         cout << "Enter prescription ID to update: ";
                         cin >> prescriptionID;
                         clearScreen();
@@ -267,7 +267,7 @@ int main()
                     }
                     case 3:
                     {
-                        string prescriptionID;
+                        int prescriptionID;
                         cout << "Enter prescription ID to search: ";
                         cin >> prescriptionID;
                         clearScreen();
@@ -283,7 +283,6 @@ int main()
                         }
                     }
                     case 0: // Back to Patient Management Menu
-                    clearScreen();
                         break;
                     default:
                         cout << "Invalid choice. Please try again.\n";
@@ -309,7 +308,7 @@ int main()
                     {
                     case 1: // Add Medication
                     {
-                        string medicationID;
+                        int medicationID;
                         string medicationName;
                         int quantity;
                         string isuueDate;
@@ -332,8 +331,7 @@ int main()
                     }
                     case 2: // Update Medication Stock
                     {
-                        string medicationID; 
-                        int newQuantity;
+                        int medicationID, newQuantity;
                         string newName, newIssueDate, newExpiryDate;
                         cout << "Enter medication ID to update stock: ";
                         cin >> medicationID;
@@ -362,7 +360,7 @@ int main()
                     }
                     case 3: // Remove Medication
                     {
-                        string medicationID;
+                        int medicationID;
                         cout << "Enter medication ID to remove: ";
                         cin >> medicationID;
                         clearScreen();
@@ -381,7 +379,7 @@ int main()
                     }
                     case 4:
                     {
-                        string medicationID;
+                        int medicationID;
                         cout << "Enter medication ID to search: ";
                         cin >> medicationID;
                         clearScreen();

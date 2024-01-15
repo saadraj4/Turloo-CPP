@@ -13,7 +13,7 @@ using namespace std;
 // Structure to represent Patient information
 struct Patient
 {
-    string patientID;
+    int patientID;
     string Fname;
     string Lname;
     string contactDetails;
@@ -21,7 +21,7 @@ struct Patient
 };
 
 // Function to add a new patient to the vector
-void addPatient(vector<Patient> &patients, const string id, const string &Fname, const string &Lname, const string &contactDetails, const string &medicalHistory)
+void addPatient(vector<Patient> &patients, int id, const string &Fname, const string &Lname, const string &contactDetails, const string &medicalHistory)
 {
     // Create a new Patient instance
     Patient newPatient;
@@ -37,7 +37,7 @@ void addPatient(vector<Patient> &patients, const string id, const string &Fname,
 }
 
 // Function to update patient details
-void updatePatient(vector<Patient> &patients, const string patientID, const string &updatedFirstName, const string &updatedLastName, const string &updatedContact, const string &updatedDetails)
+void updatePatient(vector<Patient> &patients, int patientID, const string &updatedFirstName, const string &updatedLastName, const string &updatedContact, const string &updatedDetails)
 {
     // Iterate through the patients vector
     for (Patient &patient : patients)
@@ -58,7 +58,7 @@ void updatePatient(vector<Patient> &patients, const string patientID, const stri
 }
 
 // Function to remove a patient from the vector
-void removePatient(vector<Patient> &patients, const string patientID)
+void removePatient(vector<Patient> &patients, int patientID)
 {
     // Use remove_if and erase to remove the patient with the specified ID
     auto it = remove_if(patients.begin(), patients.end(), [patientID](const Patient &patient)
@@ -77,7 +77,7 @@ void removePatient(vector<Patient> &patients, const string patientID)
 }
 
 // Function to search for a patient by ID
-void searchPatient(vector<Patient> &patients, const string patientID)
+void searchPatient(vector<Patient> &patients, int patientID)
 {
     // Iterate through the patients vector
     for (Patient &patient : patients)
@@ -100,7 +100,7 @@ void searchPatient(vector<Patient> &patients, const string patientID)
 }
 
 // Function to check if a patient with a given ID exists
-bool patientExists(const vector<Patient> &patients, const string patientID)
+bool patientExists(const vector<Patient> &patients, int patientID)
 {
     // Use any_of to check if a patient with the specified ID exists
     return any_of(patients.begin(), patients.end(), [patientID](const Patient &patient)

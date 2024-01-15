@@ -1,7 +1,7 @@
 ----- Inventory Report -----
-Medication ID: 900
+Medication ID: 4567
 Name: panadol
-Quantity: 10
-Issue Date: 2023-01-19
-Expiry Date: 2024-01-19
+Quantity: 90
+Issue Date: 2023-12-10
+Expiry Date: 2024-12-10
 --------------------------------------------

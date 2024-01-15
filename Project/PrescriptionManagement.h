@@ -12,14 +12,14 @@ using namespace std;
 // Structure to represent Prescription information
 struct Prescription
 {
-    string prescriptionID;
-    string patientID;
+    int prescriptionID;
+    int patientID;
     string dateIssued;
     string medicationDetails;
 };
 
 // Function to create a new prescription
-void createPrescription(vector<Prescription> &prescriptions, const string patientID, const string &dateIssued, const string &medicationDetails)
+void createPrescription(vector<Prescription> &prescriptions, int patientID, const string &dateIssued, const string &medicationDetails)
 {
     // Create a new Prescription instance
     Prescription newPrescription;
@@ -34,7 +34,7 @@ void createPrescription(vector<Prescription> &prescriptions, const string patien
 }
 
 // Function to update prescription details
-void updatePrescription(vector<Prescription> &prescriptions, const string prescriptionID, const string &updatedDetails)
+void updatePrescription(vector<Prescription> &prescriptions, int prescriptionID, const string &updatedDetails)
 {
     // Iterate through the prescriptions vector
     for (Prescription &prescription : prescriptions)
@@ -57,7 +57,7 @@ void updatePrescription(vector<Prescription> &prescriptions, const string prescr
 }
 
 // Function to search for a prescription by patient ID
-void searchPrescription(vector<Prescription> &prescriptions, const string patientID)
+void searchPrescription(vector<Prescription> &prescriptions, int patientID)
 {
     // Iterate through the prescriptions vector
     for (Prescription &prescription : prescriptions)
@@ -75,7 +75,7 @@ void searchPrescription(vector<Prescription> &prescriptions, const string patien
 }
 
 // Function to check if a prescription with a given ID exists
-bool prescriptionExists(const vector<Prescription> &prescriptions, const string prescriptionID)
+bool prescriptionExists(const vector<Prescription> &prescriptions, int prescriptionID)
 {
     // Use any_of to check if a prescription with the specified ID exists
     return any_of(prescriptions.begin(), prescriptions.end(), [prescriptionID](const Prescription &prescription)
